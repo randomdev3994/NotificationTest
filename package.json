@@ -1,0 +1,20 @@
+{
+    "name": "notification-plugin",
+    "version": "1.0.0",
+    "description": "A Cordova plugin to display custom Android notifications.",
+    "cordova": {
+      "id": "notification-plugin",
+      "platforms": ["android"]
+    },
+    "keywords": [
+      "cordova",
+      "plugin",
+      "android",
+      "notification",
+      "custom layout"
+    ],
+    "author": "RandomDev",
+    "license": "MIT",
+    "dependencies": {}
+  }
+  

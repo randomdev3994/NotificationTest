@@ -1,0 +1,31 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="notification-plugin"
+        version="1.0.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>NotificationPlugin</name>
+
+    
+    <js-module name="NotificationPlugin" src="www/NotificationPlugin.js">
+        <clobbers target="cordova.plugins.NotificationPlugin" />
+    </js-module>
+    
+    <platform name="android">
+        <config-file parent="/*" target="config.xml">
+            <feature name="NotificationPlugin">
+                <param name="android-package" value="com.randomdev.notification.NotificationPlugin" />
+            </feature>
+        </config-file>
+        <framework src="androidx.core:core:1.9.0" />
+        <source-file src="src/com/randomdev/notification/NotificationPlugin.java" target-dir="java/com/randomdev/notification/" />
+        <resource-file src="res/drawable/celticslogo.png" target="res/drawable/celticslogo.png"/>
+        <resource-file src="res/drawable/buckslogo.png" target="res/drawable/buckslogo.png"/>
+        <resource-file src="res/layout/custom_notification.xml" target="res/layout/custom_notification.xml"/>
+        
+        <preference name="android-targetSdkVersion" value="${ANDROID-TARGETSDKVERSION}" default="33" />
+        <preference name="android-compileSdkVersion" value="${ANDROID-COMPILESDKVERSION}" default="33"  />
+
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+        </config-file>
+    </platform>
+</plugin>
