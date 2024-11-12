@@ -40,7 +40,8 @@ public class NotificationPlugin extends CordovaPlugin {
         return false;
     }
 
-    private void showCustomNotification(/*String title, String text*/JSONObject options) throws JSONException{
+    private void showCustomNotification(JSONObject options) throws JSONException{
+
         Context context = cordova.getActivity().getApplicationContext();
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -56,6 +57,7 @@ public class NotificationPlugin extends CordovaPlugin {
             notificationManager.createNotificationChannel(channel);
         }
 
+        if(options.has("left") && options.has("right") && options.has("middle") && options.has("action") && options.has("progress")){
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.custom_notification);
         notificationLayout.setTextViewText(R.id.left_text, options.getString("left")); 
         notificationLayout.setTextViewText(R.id.right_text, options.getString("right"));
@@ -70,7 +72,6 @@ public class NotificationPlugin extends CordovaPlugin {
                 .setOngoing(false)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .build();
-        //notificationManager.cancel(NOTIFICATION_ID);
-        notificationManager.notify(NOTIFICATION_ID, customNotification);
+        notificationManager.notify(NOTIFICATION_ID, customNotification);}
     }
 }
