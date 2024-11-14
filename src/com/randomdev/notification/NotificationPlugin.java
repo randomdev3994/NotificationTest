@@ -57,7 +57,7 @@ public class NotificationPlugin extends CordovaPlugin {
             notificationManager.createNotificationChannel(channel);
         }
 
-        if(options.has("left") && options.has("right") && options.has("middle") && options.has("action") && options.has("progress")){
+        if(options.has("left") && options.has("right") && options.has("middle") && options.has("action") && options.has("Progress")){
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.custom_notification);
         notificationLayout.setTextViewText(R.id.left_text, options.getString("left")); 
         notificationLayout.setTextViewText(R.id.right_text, options.getString("right"));
